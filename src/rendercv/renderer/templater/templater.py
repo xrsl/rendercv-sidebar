@@ -86,6 +86,21 @@ def render_full_template(
         f"Header.j2.{extension}",
         rendercv_model,
     )
+
+    # Check if using sidebar theme for 2-column layout
+    is_sidebar_theme = rendercv_model.design.theme == "sidebar"
+    sidebar_section_names = []
+    main_section_names = []
+
+    if is_sidebar_theme and hasattr(rendercv_model.design, 'sidebar'):
+        # Split sections into sidebar and main groups
+        sidebar_config_sections = set(rendercv_model.design.sidebar.sections)
+        for section in rendercv_model.cv.rendercv_sections:
+            if section.snake_case_title in sidebar_config_sections:
+                sidebar_section_names.append(section.snake_case_title)
+            else:
+                main_section_names.append(section.snake_case_title)
+
     if file_type == "typst":
         preamble = render_single_template(
             file_type,
@@ -96,33 +111,109 @@ def render_full_template(
     else:
         code = f"{header}\n"
 
-    for rendercv_section in rendercv_model.cv.rendercv_sections:
-        section_beginning = render_single_template(
-            file_type,
-            f"SectionBeginning.j2.{extension}",
-            rendercv_model,
-            section_title=rendercv_section.title,
-            snake_case_section_title=rendercv_section.snake_case_title,
-            entry_type=rendercv_section.entry_type,
-        )
-        section_ending = render_single_template(
-            file_type,
-            f"SectionEnding.j2.{extension}",
-            rendercv_model,
-            entry_type=rendercv_section.entry_type,
-        )
-        entry_codes = []
-        for entry in rendercv_section.entries:
-            entry_code = render_single_template(
+    # Render sections - group by sidebar/main if sidebar theme
+    if is_sidebar_theme and file_type == "typst":
+        sidebar_sections_code = []
+        main_sections_code = []
+
+        for rendercv_section in rendercv_model.cv.rendercv_sections:
+            section_beginning = render_single_template(
                 file_type,
-                f"entries/{rendercv_section.entry_type}.j2.{extension}",
+                f"SectionBeginning.j2.{extension}",
                 rendercv_model,
-                entry=entry,
+                section_title=rendercv_section.title,
+                snake_case_section_title=rendercv_section.snake_case_title,
+                entry_type=rendercv_section.entry_type,
             )
-            entry_codes.append(entry_code)
-        entries_code = "\n\n".join(entry_codes)
-        section_code = f"{section_beginning}\n{entries_code}\n{section_ending}"
-        code += f"\n{section_code}"
+            section_ending = render_single_template(
+                file_type,
+                f"SectionEnding.j2.{extension}",
+                rendercv_model,
+                entry_type=rendercv_section.entry_type,
+            )
+            entry_codes = []
+            for entry in rendercv_section.entries:
+                entry_code = render_single_template(
+                    file_type,
+                    f"entries/{rendercv_section.entry_type}.j2.{extension}",
+                    rendercv_model,
+                    entry=entry,
+                )
+                entry_codes.append(entry_code)
+            entries_code = "\n\n".join(entry_codes)
+            section_code = f"{section_beginning}\n{entries_code}\n{section_ending}"
+
+            # Add to sidebar or main based on configuration
+            if rendercv_section.snake_case_title in sidebar_section_names:
+                sidebar_sections_code.append(section_code)
+            else:
+                main_sections_code.append(section_code)
+
+        # Create 2-column layout with grid
+        sidebar_content = "\n\n".join(sidebar_sections_code)
+        main_content = "\n\n".join(main_sections_code)
+
+        # Get sidebar configuration
+        sidebar_width = rendercv_model.design.sidebar.width
+        gutter = rendercv_model.design.sidebar.gutter
+        position = rendercv_model.design.sidebar.position
+
+        # Create grid layout
+        if position == "left":
+            code += f"""
+#grid(
+  columns: ({sidebar_width}, 1fr),
+  gutter: {gutter},
+  [
+{sidebar_content}
+  ],
+  [
+{main_content}
+  ]
+)
+"""
+        else:  # right
+            code += f"""
+#grid(
+  columns: (1fr, {sidebar_width}),
+  gutter: {gutter},
+  [
+{main_content}
+  ],
+  [
+{sidebar_content}
+  ]
+)
+"""
+    else:
+        # Standard single-column rendering
+        for rendercv_section in rendercv_model.cv.rendercv_sections:
+            section_beginning = render_single_template(
+                file_type,
+                f"SectionBeginning.j2.{extension}",
+                rendercv_model,
+                section_title=rendercv_section.title,
+                snake_case_section_title=rendercv_section.snake_case_title,
+                entry_type=rendercv_section.entry_type,
+            )
+            section_ending = render_single_template(
+                file_type,
+                f"SectionEnding.j2.{extension}",
+                rendercv_model,
+                entry_type=rendercv_section.entry_type,
+            )
+            entry_codes = []
+            for entry in rendercv_section.entries:
+                entry_code = render_single_template(
+                    file_type,
+                    f"entries/{rendercv_section.entry_type}.j2.{extension}",
+                    rendercv_model,
+                    entry=entry,
+                )
+                entry_codes.append(entry_code)
+            entries_code = "\n\n".join(entry_codes)
+            section_code = f"{section_beginning}\n{entries_code}\n{section_ending}"
+            code += f"\n{section_code}"
 
     return code
 

@@ -25,13 +25,17 @@
           "engineeringclassic": "#/$defs/EngineeringclassicTheme",
           "engineeringresumes": "#/$defs/EngineeringresumesTheme",
           "moderncv": "#/$defs/ModerncvTheme",
-          "sb2nov": "#/$defs/Sb2novTheme"
+          "sb2nov": "#/$defs/Sb2novTheme",
+          "sidebar": "#/$defs/SidebarTheme"
         },
         "propertyName": "theme"
       },
       "oneOf": [
         {
           "$ref": "#/$defs/ClassicTheme"
+        },
+        {
+          "$ref": "#/$defs/SidebarTheme"
         },
         {
           "$ref": "#/$defs/EngineeringclassicTheme"
@@ -49,15 +53,15 @@
     },
     "Bullet": {
       "enum": [
-        "●",
-        "•",
-        "◦",
+        "\u25cf",
+        "\u2022",
+        "\u25e6",
         "-",
-        "◆",
-        "★",
-        "■",
-        "—",
-        "○"
+        "\u25c6",
+        "\u2605",
+        "\u25a0",
+        "\u2014",
+        "\u25cb"
       ],
       "type": "string"
     },
@@ -155,7 +159,7 @@
       "type": "object"
     },
     "Cv": {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "name": {
           "anyOf": [
@@ -203,7 +207,7 @@
           "examples": [
             "New York, NY",
             "London, UK",
-            "Istanbul, Türkiye"
+            "Istanbul, T\u00fcrkiye"
           ],
           "title": "Location"
         },
@@ -344,32 +348,32 @@
           "type": "string"
         },
         "month": {
-          "default": "måned",
-          "description": "Translation of \"month\" (singular). The default value is `måned`.",
+          "default": "m\u00e5ned",
+          "description": "Translation of \"month\" (singular). The default value is `m\u00e5ned`.",
           "title": "Month",
           "type": "string"
         },
         "months": {
-          "default": "måneder",
-          "description": "Translation of \"months\" (plural). The default value is `måneder`.",
+          "default": "m\u00e5neder",
+          "description": "Translation of \"months\" (plural). The default value is `m\u00e5neder`.",
           "title": "Months",
           "type": "string"
         },
         "year": {
-          "default": "år",
-          "description": "Translation of \"year\" (singular). The default value is `år`.",
+          "default": "\u00e5r",
+          "description": "Translation of \"year\" (singular). The default value is `\u00e5r`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "år",
-          "description": "Translation of \"years\" (plural). The default value is `år`.",
+          "default": "\u00e5r",
+          "description": "Translation of \"years\" (plural). The default value is `\u00e5r`.",
           "title": "Years",
           "type": "string"
         },
         "present": {
-          "default": "nuværende",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `nuværende`.",
+          "default": "nuv\u00e6rende",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `nuv\u00e6rende`.",
           "title": "Present",
           "type": "string"
         },
@@ -718,8 +722,8 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "Dernière mise à jour",
-          "description": "Translation of \"Last updated in\". The default value is `Dernière mise à jour`.",
+          "default": "Derni\u00e8re mise \u00e0 jour",
+          "description": "Translation of \"Last updated in\". The default value is `Derni\u00e8re mise \u00e0 jour`.",
           "title": "Last Updated",
           "type": "string"
         },
@@ -748,25 +752,25 @@
           "type": "string"
         },
         "present": {
-          "default": "présent",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `présent`.",
+          "default": "pr\u00e9sent",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `pr\u00e9sent`.",
           "title": "Present",
           "type": "string"
         },
         "month_abbreviations": {
           "default": [
             "Jan",
-            "Fév",
+            "F\u00e9v",
             "Mar",
             "Avr",
             "Mai",
             "Juin",
             "Juil",
-            "Aoû",
+            "Ao\u00fb",
             "Sep",
             "Oct",
             "Nov",
-            "Déc"
+            "D\u00e9c"
           ],
           "description": "Month abbreviations (Jan-Dec).",
           "items": {
@@ -778,17 +782,17 @@
         "month_names": {
           "default": [
             "Janvier",
-            "Février",
+            "F\u00e9vrier",
             "Mars",
             "Avril",
             "Mai",
             "Juin",
             "Juillet",
-            "Août",
+            "Ao\u00fbt",
             "Septembre",
             "Octobre",
             "Novembre",
-            "Décembre"
+            "D\u00e9cembre"
           ],
           "description": "Full month names (January-December).",
           "items": {
@@ -842,8 +846,8 @@
           "type": "string"
         },
         "present": {
-          "default": "gegenwärtig",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `gegenwärtig`.",
+          "default": "gegenw\u00e4rtig",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `gegenw\u00e4rtig`.",
           "title": "Present",
           "type": "string"
         },
@@ -851,7 +855,7 @@
           "default": [
             "Jan",
             "Feb",
-            "Mär",
+            "M\u00e4r",
             "Apr",
             "Mai",
             "Jun",
@@ -873,7 +877,7 @@
           "default": [
             "Januar",
             "Februar",
-            "März",
+            "M\u00e4rz",
             "April",
             "Mai",
             "Juni",
@@ -906,55 +910,55 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "अंतिम अद्यतन",
-          "description": "Translation of \"Last updated in\". The default value is `अंतिम अद्यतन`.",
+          "default": "\u0905\u0902\u0924\u093f\u092e \u0905\u0926\u094d\u092f\u0924\u0928",
+          "description": "Translation of \"Last updated in\". The default value is `\u0905\u0902\u0924\u093f\u092e \u0905\u0926\u094d\u092f\u0924\u0928`.",
           "title": "Last Updated",
           "type": "string"
         },
         "month": {
-          "default": "महीना",
-          "description": "Translation of \"month\" (singular). The default value is `महीना`.",
+          "default": "\u092e\u0939\u0940\u0928\u093e",
+          "description": "Translation of \"month\" (singular). The default value is `\u092e\u0939\u0940\u0928\u093e`.",
           "title": "Month",
           "type": "string"
         },
         "months": {
-          "default": "महीने",
-          "description": "Translation of \"months\" (plural). The default value is `महीने`.",
+          "default": "\u092e\u0939\u0940\u0928\u0947",
+          "description": "Translation of \"months\" (plural). The default value is `\u092e\u0939\u0940\u0928\u0947`.",
           "title": "Months",
           "type": "string"
         },
         "year": {
-          "default": "वर्ष",
-          "description": "Translation of \"year\" (singular). The default value is `वर्ष`.",
+          "default": "\u0935\u0930\u094d\u0937",
+          "description": "Translation of \"year\" (singular). The default value is `\u0935\u0930\u094d\u0937`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "वर्ष",
-          "description": "Translation of \"years\" (plural). The default value is `वर्ष`.",
+          "default": "\u0935\u0930\u094d\u0937",
+          "description": "Translation of \"years\" (plural). The default value is `\u0935\u0930\u094d\u0937`.",
           "title": "Years",
           "type": "string"
         },
         "present": {
-          "default": "वर्तमान",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `वर्तमान`.",
+          "default": "\u0935\u0930\u094d\u0924\u092e\u093e\u0928",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `\u0935\u0930\u094d\u0924\u092e\u093e\u0928`.",
           "title": "Present",
           "type": "string"
         },
         "month_abbreviations": {
           "default": [
-            "जन",
-            "फर",
-            "मार",
-            "अप्र",
-            "मई",
-            "जून",
-            "जुल",
-            "अग",
-            "सित",
-            "अक्ट",
-            "नव",
-            "दिस"
+            "\u091c\u0928",
+            "\u092b\u0930",
+            "\u092e\u093e\u0930",
+            "\u0905\u092a\u094d\u0930",
+            "\u092e\u0908",
+            "\u091c\u0942\u0928",
+            "\u091c\u0941\u0932",
+            "\u0905\u0917",
+            "\u0938\u093f\u0924",
+            "\u0905\u0915\u094d\u091f",
+            "\u0928\u0935",
+            "\u0926\u093f\u0938"
           ],
           "description": "Month abbreviations (Jan-Dec).",
           "items": {
@@ -965,18 +969,18 @@
         },
         "month_names": {
           "default": [
-            "जनवरी",
-            "फरवरी",
-            "मार्च",
-            "अप्रैल",
-            "मई",
-            "जून",
-            "जुलाई",
-            "अगस्त",
-            "सितंबर",
-            "अक्टूबर",
-            "नवंबर",
-            "दिसंबर"
+            "\u091c\u0928\u0935\u0930\u0940",
+            "\u092b\u0930\u0935\u0930\u0940",
+            "\u092e\u093e\u0930\u094d\u091a",
+            "\u0905\u092a\u094d\u0930\u0948\u0932",
+            "\u092e\u0908",
+            "\u091c\u0942\u0928",
+            "\u091c\u0941\u0932\u093e\u0908",
+            "\u0905\u0917\u0938\u094d\u0924",
+            "\u0938\u093f\u0924\u0902\u092c\u0930",
+            "\u0905\u0915\u094d\u091f\u0942\u092c\u0930",
+            "\u0928\u0935\u0902\u092c\u0930",
+            "\u0926\u093f\u0938\u0902\u092c\u0930"
           ],
           "description": "Full month names (January-December).",
           "items": {
@@ -1188,55 +1192,55 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "最終更新",
-          "description": "Translation of \"Last updated in\". The default value is `最終更新`.",
+          "default": "\u6700\u7d42\u66f4\u65b0",
+          "description": "Translation of \"Last updated in\". The default value is `\u6700\u7d42\u66f4\u65b0`.",
           "title": "Last Updated",
           "type": "string"
         },
         "month": {
-          "default": "月",
-          "description": "Translation of \"month\" (singular). The default value is `月`.",
+          "default": "\u6708",
+          "description": "Translation of \"month\" (singular). The default value is `\u6708`.",
           "title": "Month",
           "type": "string"
         },
         "months": {
-          "default": "ヶ月",
-          "description": "Translation of \"months\" (plural). The default value is `ヶ月`.",
+          "default": "\u30f6\u6708",
+          "description": "Translation of \"months\" (plural). The default value is `\u30f6\u6708`.",
           "title": "Months",
           "type": "string"
         },
         "year": {
-          "default": "年",
-          "description": "Translation of \"year\" (singular). The default value is `年`.",
+          "default": "\u5e74",
+          "description": "Translation of \"year\" (singular). The default value is `\u5e74`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "年",
-          "description": "Translation of \"years\" (plural). The default value is `年`.",
+          "default": "\u5e74",
+          "description": "Translation of \"years\" (plural). The default value is `\u5e74`.",
           "title": "Years",
           "type": "string"
         },
         "present": {
-          "default": "現在",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `現在`.",
+          "default": "\u73fe\u5728",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `\u73fe\u5728`.",
           "title": "Present",
           "type": "string"
         },
         "month_abbreviations": {
           "default": [
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月",
-            "11月",
-            "12月"
+            "1\u6708",
+            "2\u6708",
+            "3\u6708",
+            "4\u6708",
+            "5\u6708",
+            "6\u6708",
+            "7\u6708",
+            "8\u6708",
+            "9\u6708",
+            "10\u6708",
+            "11\u6708",
+            "12\u6708"
           ],
           "description": "Month abbreviations (Jan-Dec).",
           "items": {
@@ -1247,18 +1251,18 @@
         },
         "month_names": {
           "default": [
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月",
-            "11月",
-            "12月"
+            "1\u6708",
+            "2\u6708",
+            "3\u6708",
+            "4\u6708",
+            "5\u6708",
+            "6\u6708",
+            "7\u6708",
+            "8\u6708",
+            "9\u6708",
+            "10\u6708",
+            "11\u6708",
+            "12\u6708"
           ],
           "description": "Full month names (January-December).",
           "items": {
@@ -1282,55 +1286,55 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "마지막 업데이트",
-          "description": "Translation of \"Last updated in\". The default value is `마지막 업데이트`.",
+          "default": "\ub9c8\uc9c0\ub9c9 \uc5c5\ub370\uc774\ud2b8",
+          "description": "Translation of \"Last updated in\". The default value is `\ub9c8\uc9c0\ub9c9 \uc5c5\ub370\uc774\ud2b8`.",
           "title": "Last Updated",
           "type": "string"
         },
         "month": {
-          "default": "월",
-          "description": "Translation of \"month\" (singular). The default value is `월`.",
+          "default": "\uc6d4",
+          "description": "Translation of \"month\" (singular). The default value is `\uc6d4`.",
           "title": "Month",
           "type": "string"
         },
         "months": {
-          "default": "개월",
-          "description": "Translation of \"months\" (plural). The default value is `개월`.",
+          "default": "\uac1c\uc6d4",
+          "description": "Translation of \"months\" (plural). The default value is `\uac1c\uc6d4`.",
           "title": "Months",
           "type": "string"
         },
         "year": {
-          "default": "년",
-          "description": "Translation of \"year\" (singular). The default value is `년`.",
+          "default": "\ub144",
+          "description": "Translation of \"year\" (singular). The default value is `\ub144`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "년",
-          "description": "Translation of \"years\" (plural). The default value is `년`.",
+          "default": "\ub144",
+          "description": "Translation of \"years\" (plural). The default value is `\ub144`.",
           "title": "Years",
           "type": "string"
         },
         "present": {
-          "default": "현재",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `현재`.",
+          "default": "\ud604\uc7ac",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `\ud604\uc7ac`.",
           "title": "Present",
           "type": "string"
         },
         "month_abbreviations": {
           "default": [
-            "1월",
-            "2월",
-            "3월",
-            "4월",
-            "5월",
-            "6월",
-            "7월",
-            "8월",
-            "9월",
-            "10월",
-            "11월",
-            "12월"
+            "1\uc6d4",
+            "2\uc6d4",
+            "3\uc6d4",
+            "4\uc6d4",
+            "5\uc6d4",
+            "6\uc6d4",
+            "7\uc6d4",
+            "8\uc6d4",
+            "9\uc6d4",
+            "10\uc6d4",
+            "11\uc6d4",
+            "12\uc6d4"
           ],
           "description": "Month abbreviations (Jan-Dec).",
           "items": {
@@ -1341,18 +1345,18 @@
         },
         "month_names": {
           "default": [
-            "1월",
-            "2월",
-            "3월",
-            "4월",
-            "5월",
-            "6월",
-            "7월",
-            "8월",
-            "9월",
-            "10월",
-            "11월",
-            "12월"
+            "1\uc6d4",
+            "2\uc6d4",
+            "3\uc6d4",
+            "4\uc6d4",
+            "5\uc6d4",
+            "6\uc6d4",
+            "7\uc6d4",
+            "8\uc6d4",
+            "9\uc6d4",
+            "10\uc6d4",
+            "11\uc6d4",
+            "12\uc6d4"
           ],
           "description": "Full month names (January-December).",
           "items": {
@@ -1503,55 +1507,55 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "最后更新于",
-          "description": "Translation of \"Last updated in\". The default value is `最后更新于`.",
+          "default": "\u6700\u540e\u66f4\u65b0\u4e8e",
+          "description": "Translation of \"Last updated in\". The default value is `\u6700\u540e\u66f4\u65b0\u4e8e`.",
           "title": "Last Updated",
           "type": "string"
         },
         "month": {
-          "default": "个月",
-          "description": "Translation of \"month\" (singular). The default value is `个月`.",
+          "default": "\u4e2a\u6708",
+          "description": "Translation of \"month\" (singular). The default value is `\u4e2a\u6708`.",
           "title": "Month",
           "type": "string"
         },
         "months": {
-          "default": "个月",
-          "description": "Translation of \"months\" (plural). The default value is `个月`.",
+          "default": "\u4e2a\u6708",
+          "description": "Translation of \"months\" (plural). The default value is `\u4e2a\u6708`.",
           "title": "Months",
           "type": "string"
         },
         "year": {
-          "default": "年",
-          "description": "Translation of \"year\" (singular). The default value is `年`.",
+          "default": "\u5e74",
+          "description": "Translation of \"year\" (singular). The default value is `\u5e74`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "年",
-          "description": "Translation of \"years\" (plural). The default value is `年`.",
+          "default": "\u5e74",
+          "description": "Translation of \"years\" (plural). The default value is `\u5e74`.",
           "title": "Years",
           "type": "string"
         },
         "present": {
-          "default": "至今",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `至今`.",
+          "default": "\u81f3\u4eca",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `\u81f3\u4eca`.",
           "title": "Present",
           "type": "string"
         },
         "month_abbreviations": {
           "default": [
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月",
-            "11月",
-            "12月"
+            "1\u6708",
+            "2\u6708",
+            "3\u6708",
+            "4\u6708",
+            "5\u6708",
+            "6\u6708",
+            "7\u6708",
+            "8\u6708",
+            "9\u6708",
+            "10\u6708",
+            "11\u6708",
+            "12\u6708"
           ],
           "description": "Month abbreviations (Jan-Dec).",
           "items": {
@@ -1562,18 +1566,18 @@
         },
         "month_names": {
           "default": [
-            "一月",
-            "二月",
-            "三月",
-            "四月",
-            "五月",
-            "六月",
-            "七月",
-            "八月",
-            "九月",
-            "十月",
-            "十一月",
-            "十二月"
+            "\u4e00\u6708",
+            "\u4e8c\u6708",
+            "\u4e09\u6708",
+            "\u56db\u6708",
+            "\u4e94\u6708",
+            "\u516d\u6708",
+            "\u4e03\u6708",
+            "\u516b\u6708",
+            "\u4e5d\u6708",
+            "\u5341\u6708",
+            "\u5341\u4e00\u6708",
+            "\u5341\u4e8c\u6708"
           ],
           "description": "Full month names (January-December).",
           "items": {
@@ -1677,14 +1681,14 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "Última atualização",
-          "description": "Translation of \"Last updated in\". The default value is `Última atualização`.",
+          "default": "\u00daltima atualiza\u00e7\u00e3o",
+          "description": "Translation of \"Last updated in\". The default value is `\u00daltima atualiza\u00e7\u00e3o`.",
           "title": "Last Updated",
           "type": "string"
         },
         "month": {
-          "default": "mês",
-          "description": "Translation of \"month\" (singular). The default value is `mês`.",
+          "default": "m\u00eas",
+          "description": "Translation of \"month\" (singular). The default value is `m\u00eas`.",
           "title": "Month",
           "type": "string"
         },
@@ -1738,7 +1742,7 @@
           "default": [
             "Janeiro",
             "Fevereiro",
-            "Março",
+            "Mar\u00e7o",
             "Abril",
             "Maio",
             "Junho",
@@ -1878,55 +1882,55 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "Последнее обновление",
-          "description": "Translation of \"Last updated in\". The default value is `Последнее обновление`.",
+          "default": "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435",
+          "description": "Translation of \"Last updated in\". The default value is `\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435`.",
           "title": "Last Updated",
           "type": "string"
         },
         "month": {
-          "default": "месяц",
-          "description": "Translation of \"month\" (singular). The default value is `месяц`.",
+          "default": "\u043c\u0435\u0441\u044f\u0446",
+          "description": "Translation of \"month\" (singular). The default value is `\u043c\u0435\u0441\u044f\u0446`.",
           "title": "Month",
           "type": "string"
         },
         "months": {
-          "default": "месяцы",
-          "description": "Translation of \"months\" (plural). The default value is `месяцы`.",
+          "default": "\u043c\u0435\u0441\u044f\u0446\u044b",
+          "description": "Translation of \"months\" (plural). The default value is `\u043c\u0435\u0441\u044f\u0446\u044b`.",
           "title": "Months",
           "type": "string"
         },
         "year": {
-          "default": "год",
-          "description": "Translation of \"year\" (singular). The default value is `год`.",
+          "default": "\u0433\u043e\u0434",
+          "description": "Translation of \"year\" (singular). The default value is `\u0433\u043e\u0434`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "лет",
-          "description": "Translation of \"years\" (plural). The default value is `лет`.",
+          "default": "\u043b\u0435\u0442",
+          "description": "Translation of \"years\" (plural). The default value is `\u043b\u0435\u0442`.",
           "title": "Years",
           "type": "string"
         },
         "present": {
-          "default": "настоящее время",
-          "description": "Translation of \"present\" for ongoing dates. The default value is `настоящее время`.",
+          "default": "\u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f",
+          "description": "Translation of \"present\" for ongoing dates. The default value is `\u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f`.",
           "title": "Present",
           "type": "string"
         },
         "month_abbreviations": {
           "default": [
-            "Янв",
-            "Фев",
-            "Мар",
-            "Апр",
-            "Май",
-            "Июн",
-            "Июл",
-            "Авг",
-            "Сен",
-            "Окт",
-            "Ноя",
-            "Дек"
+            "\u042f\u043d\u0432",
+            "\u0424\u0435\u0432",
+            "\u041c\u0430\u0440",
+            "\u0410\u043f\u0440",
+            "\u041c\u0430\u0439",
+            "\u0418\u044e\u043d",
+            "\u0418\u044e\u043b",
+            "\u0410\u0432\u0433",
+            "\u0421\u0435\u043d",
+            "\u041e\u043a\u0442",
+            "\u041d\u043e\u044f",
+            "\u0414\u0435\u043a"
           ],
           "description": "Month abbreviations (Jan-Dec).",
           "items": {
@@ -1937,18 +1941,18 @@
         },
         "month_names": {
           "default": [
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"
+            "\u042f\u043d\u0432\u0430\u0440\u044c",
+            "\u0424\u0435\u0432\u0440\u0430\u043b\u044c",
+            "\u041c\u0430\u0440\u0442",
+            "\u0410\u043f\u0440\u0435\u043b\u044c",
+            "\u041c\u0430\u0439",
+            "\u0418\u044e\u043d\u044c",
+            "\u0418\u044e\u043b\u044c",
+            "\u0410\u0432\u0433\u0443\u0441\u0442",
+            "\u0421\u0435\u043d\u0442\u044f\u0431\u0440\u044c",
+            "\u041e\u043a\u0442\u044f\u0431\u0440\u044c",
+            "\u041d\u043e\u044f\u0431\u0440\u044c",
+            "\u0414\u0435\u043a\u0430\u0431\u0440\u044c"
           ],
           "description": "Full month names (January-December).",
           "items": {
@@ -2040,6 +2044,107 @@
       "title": "Settings",
       "type": "object"
     },
+    "Sidebar": {
+      "additionalProperties": false,
+      "description": "Configuration for the sidebar column in 2-column layout.",
+      "properties": {
+        "width": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "30%",
+          "description": "Width of the sidebar column. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `30%`."
+        },
+        "position": {
+          "default": "left",
+          "description": "Position of the sidebar. The default value is `left`.",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "title": "Position",
+          "type": "string"
+        },
+        "gutter": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.5cm",
+          "description": "Space between sidebar and main content. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.5cm`."
+        },
+        "background_color": {
+          "anyOf": [
+            {
+              "format": "color",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Background color for the sidebar. If not set, uses page background.",
+          "title": "Background Color"
+        },
+        "sections": {
+          "default": [
+            "skills",
+            "publications",
+            "values",
+            "hobbies",
+            "references"
+          ],
+          "description": "List of section names that should appear in the sidebar. All other sections will appear in the main content area. The default value is ['skills', 'publications', 'values', 'hobbies', 'references'].",
+          "items": {
+            "type": "string"
+          },
+          "title": "Sections",
+          "type": "array"
+        }
+      },
+      "title": "Sidebar",
+      "type": "object"
+    },
+    "SidebarTheme": {
+      "additionalProperties": false,
+      "properties": {
+        "theme": {
+          "const": "sidebar",
+          "default": "sidebar",
+          "title": "Theme",
+          "type": "string"
+        },
+        "page": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Page"
+        },
+        "colors": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Colors"
+        },
+        "typography": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Typography"
+        },
+        "links": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Links"
+        },
+        "header": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Header"
+        },
+        "section_titles": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__SectionTitles"
+        },
+        "sections": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Sections"
+        },
+        "entries": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Entries"
+        },
+        "templates": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Templates"
+        },
+        "sidebar": {
+          "$ref": "#/$defs/Sidebar",
+          "description": "Sidebar configuration for 2-column layout."
+        }
+      },
+      "title": "SidebarTheme",
+      "type": "object"
+    },
     "SmallCaps": {
       "additionalProperties": false,
       "properties": {
@@ -2126,8 +2231,8 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "Última actualización",
-          "description": "Translation of \"Last updated in\". The default value is `Última actualización`.",
+          "default": "\u00daltima actualizaci\u00f3n",
+          "description": "Translation of \"Last updated in\". The default value is `\u00daltima actualizaci\u00f3n`.",
           "title": "Last Updated",
           "type": "string"
         },
@@ -2144,14 +2249,14 @@
           "type": "string"
         },
         "year": {
-          "default": "año",
-          "description": "Translation of \"year\" (singular). The default value is `año`.",
+          "default": "a\u00f1o",
+          "description": "Translation of \"year\" (singular). The default value is `a\u00f1o`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "años",
-          "description": "Translation of \"years\" (plural). The default value is `años`.",
+          "default": "a\u00f1os",
+          "description": "Translation of \"years\" (plural). The default value is `a\u00f1os`.",
           "title": "Years",
           "type": "string"
         },
@@ -2220,8 +2325,8 @@
           "type": "string"
         },
         "last_updated": {
-          "default": "Son güncelleme",
-          "description": "Translation of \"Last updated in\". The default value is `Son güncelleme`.",
+          "default": "Son g\u00fcncelleme",
+          "description": "Translation of \"Last updated in\". The default value is `Son g\u00fcncelleme`.",
           "title": "Last Updated",
           "type": "string"
         },
@@ -2238,14 +2343,14 @@
           "type": "string"
         },
         "year": {
-          "default": "yıl",
-          "description": "Translation of \"year\" (singular). The default value is `yıl`.",
+          "default": "y\u0131l",
+          "description": "Translation of \"year\" (singular). The default value is `y\u0131l`.",
           "title": "Year",
           "type": "string"
         },
         "years": {
-          "default": "yıl",
-          "description": "Translation of \"years\" (plural). The default value is `yıl`.",
+          "default": "y\u0131l",
+          "description": "Translation of \"years\" (plural). The default value is `y\u0131l`.",
           "title": "Years",
           "type": "string"
         },
@@ -2258,13 +2363,13 @@
         "month_abbreviations": {
           "default": [
             "Oca",
-            "Şub",
+            "\u015eub",
             "Mar",
             "Nis",
             "May",
             "Haz",
             "Tem",
-            "Ağu",
+            "A\u011fu",
             "Eyl",
             "Eki",
             "Kas",
@@ -2280,17 +2385,17 @@
         "month_names": {
           "default": [
             "Ocak",
-            "Şubat",
+            "\u015eubat",
             "Mart",
             "Nisan",
-            "Mayıs",
+            "May\u0131s",
             "Haziran",
             "Temmuz",
-            "Ağustos",
-            "Eylül",
+            "A\u011fustos",
+            "Eyl\u00fcl",
             "Ekim",
-            "Kasım",
-            "Aralık"
+            "Kas\u0131m",
+            "Aral\u0131k"
           ],
           "description": "Full month names (January-December).",
           "items": {
@@ -2312,7 +2417,7 @@
       "properties": {
         "institution": {
           "examples": [
-            "Boğaziçi University",
+            "Bo\u011fazi\u00e7i University",
             "MIT",
             "Harvard University"
           ],
@@ -2417,7 +2522,7 @@
           ],
           "default": null,
           "examples": [
-            "Istanbul, Türkiye",
+            "Istanbul, T\u00fcrkiye",
             "New York, NY",
             "Remote"
           ],
@@ -2562,7 +2667,7 @@
           ],
           "default": null,
           "examples": [
-            "Istanbul, Türkiye",
+            "Istanbul, T\u00fcrkiye",
             "New York, NY",
             "Remote"
           ],
@@ -2698,7 +2803,7 @@
           ],
           "default": null,
           "examples": [
-            "Istanbul, Türkiye",
+            "Istanbul, T\u00fcrkiye",
             "New York, NY",
             "Remote"
           ],
@@ -3325,7 +3430,7 @@
         },
         "separator": {
           "default": "",
-          "description": "Character(s) to separate contact items (e.g., '|' or '•'). Leave empty for no separator. The default value is `''`.",
+          "description": "Character(s) to separate contact items (e.g., '|' or '\u2022'). Leave empty for no separator. The default value is `''`.",
           "title": "Separator",
           "type": "string"
         },
@@ -3366,7 +3471,7 @@
         },
         "separator": {
           "default": "|",
-          "description": "Character(s) to separate contact items (e.g., '|' or '•'). Leave empty for no separator. The default value is `''`.",
+          "description": "Character(s) to separate contact items (e.g., '|' or '\u2022'). Leave empty for no separator. The default value is `''`.",
           "title": "Separator",
           "type": "string"
         },
@@ -3406,8 +3511,8 @@
           "type": "boolean"
         },
         "separator": {
-          "default": "•",
-          "description": "Character(s) to separate contact items (e.g., '|' or '•'). Leave empty for no separator. The default value is `''`.",
+          "default": "\u2022",
+          "description": "Character(s) to separate contact items (e.g., '|' or '\u2022'). Leave empty for no separator. The default value is `''`.",
           "title": "Separator",
           "type": "string"
         },
@@ -4298,13 +4403,13 @@
       "properties": {
         "bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "•",
-          "description": "Bullet character for highlights. The default value is `•`."
+          "default": "\u2022",
+          "description": "Bullet character for highlights. The default value is `\u2022`."
         },
         "nested_bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "•",
-          "description": "Bullet character for nested highlights. The default value is `•`."
+          "default": "\u2022",
+          "description": "Bullet character for nested highlights. The default value is `\u2022`."
         },
         "space_left": {
           "$ref": "#/$defs/TypstDimension",
@@ -4335,13 +4440,13 @@
       "properties": {
         "bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "•",
-          "description": "Bullet character for highlights. The default value is `•`."
+          "default": "\u2022",
+          "description": "Bullet character for highlights. The default value is `\u2022`."
         },
         "nested_bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "•",
-          "description": "Bullet character for nested highlights. The default value is `•`."
+          "default": "\u2022",
+          "description": "Bullet character for nested highlights. The default value is `\u2022`."
         },
         "space_left": {
           "$ref": "#/$defs/TypstDimension",
@@ -4372,13 +4477,13 @@
       "properties": {
         "bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "●",
-          "description": "Bullet character for highlights. The default value is `●`."
+          "default": "\u25cf",
+          "description": "Bullet character for highlights. The default value is `\u25cf`."
         },
         "nested_bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "●",
-          "description": "Bullet character for nested highlights. The default value is `●`."
+          "default": "\u25cf",
+          "description": "Bullet character for nested highlights. The default value is `\u25cf`."
         },
         "space_left": {
           "$ref": "#/$defs/TypstDimension",
@@ -4409,13 +4514,13 @@
       "properties": {
         "bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "•",
-          "description": "Bullet character for highlights. The default value is `•`."
+          "default": "\u2022",
+          "description": "Bullet character for highlights. The default value is `\u2022`."
         },
         "nested_bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "•",
-          "description": "Bullet character for nested highlights. The default value is `•`."
+          "default": "\u2022",
+          "description": "Bullet character for nested highlights. The default value is `\u2022`."
         },
         "space_left": {
           "$ref": "#/$defs/TypstDimension",
@@ -4446,13 +4551,13 @@
       "properties": {
         "bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "◦",
-          "description": "Bullet character for highlights. The default value is `◦`."
+          "default": "\u25e6",
+          "description": "Bullet character for highlights. The default value is `\u25e6`."
         },
         "nested_bullet": {
           "$ref": "#/$defs/Bullet",
-          "default": "◦",
-          "description": "Bullet character for nested highlights. The default value is `◦`."
+          "default": "\u25e6",
+          "description": "Bullet character for nested highlights. The default value is `\u25e6`."
         },
         "space_left": {
           "$ref": "#/$defs/TypstDimension",
@@ -5184,8 +5289,8 @@
           "type": "string"
         },
         "date_range": {
-          "default": "START_DATE – END_DATE",
-          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE – END_DATE`.",
+          "default": "START_DATE \u2013 END_DATE",
+          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE \u2013 END_DATE`.",
           "title": "Date Range",
           "type": "string"
         },
@@ -5241,8 +5346,8 @@
           "type": "string"
         },
         "date_range": {
-          "default": "START_DATE – END_DATE",
-          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE – END_DATE`.",
+          "default": "START_DATE \u2013 END_DATE",
+          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE \u2013 END_DATE`.",
           "title": "Date Range",
           "type": "string"
         },
@@ -5298,8 +5403,8 @@
           "type": "string"
         },
         "date_range": {
-          "default": "START_DATE – END_DATE",
-          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE – END_DATE`.",
+          "default": "START_DATE \u2013 END_DATE",
+          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE \u2013 END_DATE`.",
           "title": "Date Range",
           "type": "string"
         },
@@ -5355,8 +5460,8 @@
           "type": "string"
         },
         "date_range": {
-          "default": "START_DATE – END_DATE",
-          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE – END_DATE`.",
+          "default": "START_DATE \u2013 END_DATE",
+          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE \u2013 END_DATE`.",
           "title": "Date Range",
           "type": "string"
         },
@@ -5412,8 +5517,8 @@
           "type": "string"
         },
         "date_range": {
-          "default": "START_DATE – END_DATE",
-          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE – END_DATE`.",
+          "default": "START_DATE \u2013 END_DATE",
+          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE \u2013 END_DATE`.",
           "title": "Date Range",
           "type": "string"
         },
@@ -5746,6 +5851,749 @@
         "XCharter"
       ],
       "type": "string"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Bold": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": true,
+          "description": "Whether to make the name bold. The default value is `true`.",
+          "title": "Name",
+          "type": "boolean"
+        },
+        "headline": {
+          "default": false,
+          "description": "Whether to make the headline bold. The default value is `false`.",
+          "title": "Headline",
+          "type": "boolean"
+        },
+        "connections": {
+          "default": false,
+          "description": "Whether to make connections bold. The default value is `false`.",
+          "title": "Connections",
+          "type": "boolean"
+        },
+        "section_titles": {
+          "default": true,
+          "description": "Whether to make section titles bold. The default value is `true`.",
+          "title": "Section Titles",
+          "type": "boolean"
+        }
+      },
+      "title": "Bold",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Colors": {
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "default": "rgb(0, 0, 0)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(0, 0, 0)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Body",
+          "type": "string"
+        },
+        "name": {
+          "default": "rgb(0, 79, 144)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(0, 79, 144)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Name",
+          "type": "string"
+        },
+        "headline": {
+          "default": "rgb(0, 79, 144)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(0, 79, 144)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Headline",
+          "type": "string"
+        },
+        "connections": {
+          "default": "rgb(0, 79, 144)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(0, 79, 144)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Connections",
+          "type": "string"
+        },
+        "section_titles": {
+          "default": "rgb(0, 79, 144)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(0, 79, 144)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Section Titles",
+          "type": "string"
+        },
+        "links": {
+          "default": "rgb(0, 79, 144)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(0, 79, 144)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Links",
+          "type": "string"
+        },
+        "footer": {
+          "default": "rgb(128, 128, 128)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(128, 128, 128)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Footer",
+          "type": "string"
+        },
+        "top_note": {
+          "default": "rgb(128, 128, 128)",
+          "description": "The color can be specified either with their name (https://www.w3.org/TR/SVG11/types.html#ColorKeywords), hexadecimal value, RGB value, or HSL value. The default value is `rgb(128, 128, 128)`.",
+          "examples": [
+            "Black",
+            "7fffd4",
+            "rgb(0,79,144)",
+            "hsl(270, 60%, 70%)"
+          ],
+          "format": "color",
+          "title": "Top Note",
+          "type": "string"
+        }
+      },
+      "title": "Colors",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Connections": {
+      "additionalProperties": false,
+      "properties": {
+        "phone_number_format": {
+          "$ref": "#/$defs/PhoneNumberFormatType",
+          "default": "national",
+          "description": "Phone number format. The default value is `national`."
+        },
+        "hyperlink": {
+          "default": true,
+          "description": "Make contact information clickable in the PDF. The default value is `true`.",
+          "title": "Hyperlink",
+          "type": "boolean"
+        },
+        "show_icons": {
+          "default": true,
+          "description": "Show icons next to contact information. The default value is `true`.",
+          "title": "Show Icons",
+          "type": "boolean"
+        },
+        "display_urls_instead_of_usernames": {
+          "default": false,
+          "description": "Display full URLs instead of labels. The default value is `false`.",
+          "title": "Display Urls Instead Of Usernames",
+          "type": "boolean"
+        },
+        "separator": {
+          "default": "",
+          "description": "Character(s) to separate contact items (e.g., '|' or '\u2022'). Leave empty for no separator. The default value is `''`.",
+          "title": "Separator",
+          "type": "string"
+        },
+        "space_between_connections": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.5cm",
+          "description": "Horizontal space between contact items. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.5cm`."
+        }
+      },
+      "title": "Connections",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__EducationEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "main_column": {
+          "default": "**INSTITUTION**, AREA\nSUMMARY\nHIGHLIGHTS",
+          "description": "Template for education entry main column. Available placeholders:\n- `INSTITUTION`: Institution name\n- `AREA`: Field of study/major\n- `DEGREE`: Degree type (e.g., BS, PhD)\n- `SUMMARY`: Summary text\n- `HIGHLIGHTS`: Bullet points list\n- `LOCATION`: Location text\n- `DATE`: Formatted date or date range\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `**INSTITUTION**, AREA\\nSUMMARY\\nHIGHLIGHTS`.",
+          "title": "Main Column",
+          "type": "string"
+        },
+        "degree_column": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "**DEGREE**",
+          "description": "Optional degree column template. If provided, displays degree in separate column. If `null`, no degree column is shown. Available placeholders:\n- `INSTITUTION`: Institution name\n- `AREA`: Field of study/major\n- `DEGREE`: Degree type (e.g., BS, PhD)\n- `SUMMARY`: Summary text\n- `HIGHLIGHTS`: Bullet points list\n- `LOCATION`: Location text\n- `DATE`: Formatted date or date range\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `**DEGREE**`.",
+          "title": "Degree Column"
+        },
+        "date_and_location_column": {
+          "default": "LOCATION\nDATE",
+          "description": "Template for education entry date/location column. Available placeholders:\n- `INSTITUTION`: Institution name\n- `AREA`: Field of study/major\n- `DEGREE`: Degree type (e.g., BS, PhD)\n- `SUMMARY`: Summary text\n- `HIGHLIGHTS`: Bullet points list\n- `LOCATION`: Location text\n- `DATE`: Formatted date or date range\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `LOCATION\\nDATE`.",
+          "title": "Date And Location Column",
+          "type": "string"
+        }
+      },
+      "title": "EducationEntry",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Entries": {
+      "additionalProperties": false,
+      "properties": {
+        "date_and_location_width": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "4.15cm",
+          "description": "Width of the date/location column. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `4.15cm`."
+        },
+        "side_space": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.2cm",
+          "description": "Left and right margins. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.2cm`."
+        },
+        "space_between_columns": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.1cm",
+          "description": "Space between main content and date/location columns. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.1cm`."
+        },
+        "allow_page_break": {
+          "default": false,
+          "description": "Allow page breaks within entries. If false, entries that don't fit will move to a new page. The default value is `false`.",
+          "title": "Allow Page Break",
+          "type": "boolean"
+        },
+        "short_second_row": {
+          "default": true,
+          "description": "Shorten the second row to align with the date/location column. The default value is `true`.",
+          "title": "Short Second Row",
+          "type": "boolean"
+        },
+        "summary": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Summary",
+          "description": "Summary text settings."
+        },
+        "highlights": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Highlights",
+          "description": "Highlights settings."
+        }
+      },
+      "title": "Entries",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__ExperienceEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "main_column": {
+          "default": "**COMPANY**, POSITION\nSUMMARY\nHIGHLIGHTS",
+          "description": "Template for experience entry main column. Available placeholders:\n- `COMPANY`: Company name\n- `POSITION`: Job title/position\n- `SUMMARY`: Summary text\n- `HIGHLIGHTS`: Bullet points list\n- `LOCATION`: Location text\n- `DATE`: Formatted date or date range\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `**COMPANY**, POSITION\\nSUMMARY\\nHIGHLIGHTS`.",
+          "title": "Main Column",
+          "type": "string"
+        },
+        "date_and_location_column": {
+          "default": "LOCATION\nDATE",
+          "description": "Template for experience entry date/location column. Available placeholders:\n- `COMPANY`: Company name\n- `POSITION`: Job title/position\n- `SUMMARY`: Summary text\n- `HIGHLIGHTS`: Bullet points list\n- `LOCATION`: Location text\n- `DATE`: Formatted date or date range\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `LOCATION\\nDATE`.",
+          "title": "Date And Location Column",
+          "type": "string"
+        }
+      },
+      "title": "ExperienceEntry",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__FontFamily": {
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "$ref": "#/$defs/rendercv__schema__models__design__font_family__FontFamily",
+          "default": "Source Sans 3",
+          "description": "The font family for body text. The default value is `Source Sans 3`."
+        },
+        "name": {
+          "$ref": "#/$defs/rendercv__schema__models__design__font_family__FontFamily",
+          "default": "Source Sans 3",
+          "description": "The font family for the name. The default value is `Source Sans 3`."
+        },
+        "headline": {
+          "$ref": "#/$defs/rendercv__schema__models__design__font_family__FontFamily",
+          "default": "Source Sans 3",
+          "description": "The font family for the headline. The default value is `Source Sans 3`."
+        },
+        "connections": {
+          "$ref": "#/$defs/rendercv__schema__models__design__font_family__FontFamily",
+          "default": "Source Sans 3",
+          "description": "The font family for connections. The default value is `Source Sans 3`."
+        },
+        "section_titles": {
+          "$ref": "#/$defs/rendercv__schema__models__design__font_family__FontFamily",
+          "default": "Source Sans 3",
+          "description": "The font family for section titles. The default value is `Source Sans 3`."
+        }
+      },
+      "title": "FontFamily",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__FontSize": {
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "10pt",
+          "description": "The font size for body text. The default value is `10pt`."
+        },
+        "name": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "30pt",
+          "description": "The font size for the name. The default value is `30pt`."
+        },
+        "headline": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "10pt",
+          "description": "The font size for the headline. The default value is `10pt`."
+        },
+        "connections": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "10pt",
+          "description": "The font size for connections. The default value is `10pt`."
+        },
+        "section_titles": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "1.4em",
+          "description": "The font size for section titles. The default value is `1.4em`."
+        }
+      },
+      "title": "FontSize",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Header": {
+      "additionalProperties": false,
+      "properties": {
+        "alignment": {
+          "$ref": "#/$defs/Alignment",
+          "default": "center",
+          "description": "Header alignment. Options: 'left', 'center', 'right'. The default value is `center`."
+        },
+        "photo_width": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "3.5cm",
+          "description": "Photo width. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `3.5cm`."
+        },
+        "photo_position": {
+          "default": "left",
+          "description": "Photo position (left or right). The default value is `left`.",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "title": "Photo Position",
+          "type": "string"
+        },
+        "photo_space_left": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.4cm",
+          "description": "Space to the left of the photo. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.4cm`."
+        },
+        "photo_space_right": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.4cm",
+          "description": "Space to the right of the photo. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.4cm`."
+        },
+        "space_below_name": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.7cm",
+          "description": "Space below your name. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.7cm`."
+        },
+        "space_below_headline": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.7cm",
+          "description": "Space below the headline. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.7cm`."
+        },
+        "space_below_connections": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.7cm",
+          "description": "Space below contact information. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.7cm`."
+        },
+        "connections": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Connections",
+          "description": "Contact information settings."
+        }
+      },
+      "title": "Header",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Highlights": {
+      "additionalProperties": false,
+      "properties": {
+        "bullet": {
+          "$ref": "#/$defs/Bullet",
+          "default": "\u2022",
+          "description": "Bullet character for highlights. The default value is `\u2022`."
+        },
+        "nested_bullet": {
+          "$ref": "#/$defs/Bullet",
+          "default": "\u2022",
+          "description": "Bullet character for nested highlights. The default value is `\u2022`."
+        },
+        "space_left": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.15cm",
+          "description": "Left indentation. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.15cm`."
+        },
+        "space_above": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0cm",
+          "description": "Space above highlights. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0cm`."
+        },
+        "space_between_items": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0cm",
+          "description": "Space between highlight items. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0cm`."
+        },
+        "space_between_bullet_and_text": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.5em",
+          "description": "Space between bullet and text. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.5em`."
+        }
+      },
+      "title": "Highlights",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Links": {
+      "additionalProperties": false,
+      "properties": {
+        "underline": {
+          "default": false,
+          "description": "Underline hyperlinks. The default value is `false`.",
+          "title": "Underline",
+          "type": "boolean"
+        },
+        "show_external_link_icon": {
+          "default": false,
+          "description": "Show an external link icon next to URLs. The default value is `false`.",
+          "title": "Show External Link Icon",
+          "type": "boolean"
+        }
+      },
+      "title": "Links",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__NormalEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "main_column": {
+          "default": "**NAME**\nSUMMARY\nHIGHLIGHTS",
+          "description": "Template for normal entry main column. Available placeholders:\n- `NAME`: Entry name/title\n- `SUMMARY`: Summary text\n- `HIGHLIGHTS`: Bullet points list\n- `LOCATION`: Location text\n- `DATE`: Formatted date or date range\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `**NAME**\\nSUMMARY\\nHIGHLIGHTS`.",
+          "title": "Main Column",
+          "type": "string"
+        },
+        "date_and_location_column": {
+          "default": "LOCATION\nDATE",
+          "description": "Template for normal entry date/location column. Available placeholders:\n- `NAME`: Entry name/title\n- `SUMMARY`: Summary text\n- `HIGHLIGHTS`: Bullet points list\n- `LOCATION`: Location text\n- `DATE`: Formatted date or date range\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `LOCATION\\nDATE`.",
+          "title": "Date And Location Column",
+          "type": "string"
+        }
+      },
+      "title": "NormalEntry",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__OneLineEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "main_column": {
+          "default": "**LABEL:** DETAILS",
+          "description": "Template for one-line entries. Available placeholders:\n- `LABEL`: The label text (e.g., \"Languages\", \"Citizenship\")\n- `DETAILS`: The details text (e.g., \"English (native), Spanish (fluent)\")\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `**LABEL:** DETAILS`.",
+          "title": "Main Column",
+          "type": "string"
+        }
+      },
+      "title": "OneLineEntry",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Page": {
+      "additionalProperties": false,
+      "properties": {
+        "size": {
+          "$ref": "#/$defs/PageSize",
+          "default": "us-letter",
+          "description": "The page size. Use 'a4' (international standard) or 'us-letter' (US standard). The default value is `us-letter`."
+        },
+        "top_margin": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.7in",
+          "description": "It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.7in`."
+        },
+        "bottom_margin": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.7in",
+          "description": "It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.7in`."
+        },
+        "left_margin": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.7in",
+          "description": "It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.7in`."
+        },
+        "right_margin": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.7in",
+          "description": "It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.7in`."
+        },
+        "show_footer": {
+          "default": true,
+          "description": "Show the footer at the bottom of pages. The default value is `true`.",
+          "title": "Show Footer",
+          "type": "boolean"
+        },
+        "show_top_note": {
+          "default": true,
+          "description": "Show the top note at the top of the first page. The default value is `true`.",
+          "title": "Show Top Note",
+          "type": "boolean"
+        }
+      },
+      "title": "Page",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__PublicationEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "main_column": {
+          "default": "**TITLE**\nSUMMARY\nAUTHORS\nURL (JOURNAL)",
+          "description": "Template for publication entry main column. Available placeholders:\n- `TITLE`: Publication title\n- `AUTHORS`: List of authors (formatted as comma-separated string)\n- `SUMMARY`: Summary/abstract text\n- `DOI`: Digital Object Identifier\n- `URL`: Publication URL (if DOI not provided)\n- `JOURNAL`: Journal/conference/venue name\n- `DATE`: Formatted date\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `**TITLE**\\nSUMMARY\\nAUTHORS\\nURL (JOURNAL)`.",
+          "title": "Main Column",
+          "type": "string"
+        },
+        "date_and_location_column": {
+          "default": "DATE",
+          "description": "Template for publication entry date column. Available placeholders:\n- `TITLE`: Publication title\n- `AUTHORS`: List of authors (formatted as comma-separated string)\n- `SUMMARY`: Summary/abstract text\n- `DOI`: Digital Object Identifier\n- `URL`: Publication URL (if DOI not provided)\n- `JOURNAL`: Journal/conference/venue name\n- `DATE`: Formatted date\n\nYou can also add arbitrary keys to entries and use them as UPPERCASE placeholders.\n\nThe default value is `DATE`.",
+          "title": "Date And Location Column",
+          "type": "string"
+        }
+      },
+      "title": "PublicationEntry",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__SectionTitles": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/SectionTitleType",
+          "default": "with_partial_line",
+          "description": "Section title visual style. Use 'with_partial_line' for a line next to the title, 'with_full_line' for a line across the page, 'without_line' for no line, or 'moderncv' for the ModernCV style. The default value is `with_partial_line`."
+        },
+        "line_thickness": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.5pt",
+          "description": "It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.5pt`."
+        },
+        "space_above": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.5cm",
+          "description": "It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.5cm`."
+        },
+        "space_below": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.3cm",
+          "description": "It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.3cm`."
+        }
+      },
+      "title": "SectionTitles",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Sections": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_page_break": {
+          "default": true,
+          "description": "Allow page breaks within sections. If false, sections that don't fit will start on a new page. The default value is `true`.",
+          "title": "Allow Page Break",
+          "type": "boolean"
+        },
+        "space_between_regular_entries": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "1.2em",
+          "description": "Vertical space between entries. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `1.2em`."
+        },
+        "space_between_text_based_entries": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.3em",
+          "description": "Vertical space between text-based entries. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0.3em`."
+        },
+        "show_time_spans_in": {
+          "default": [
+            "experience"
+          ],
+          "description": "Section titles where time spans (e.g., '2 years 3 months') should be displayed. The default value is `['experience']`.",
+          "examples": [
+            [
+              "Experience"
+            ],
+            [
+              "Experience",
+              "Education"
+            ]
+          ],
+          "items": {
+            "type": "string"
+          },
+          "title": "Show Time Spans In",
+          "type": "array"
+        }
+      },
+      "title": "Sections",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Summary": {
+      "additionalProperties": false,
+      "properties": {
+        "space_above": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0cm",
+          "description": "Space above summary text. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0cm`."
+        },
+        "space_left": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0cm",
+          "description": "Left margin for summary text. It can be specified with units (cm, in, pt, mm, ex, em). For example, `0.1cm`. The default value is `0cm`."
+        }
+      },
+      "title": "Summary",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Templates": {
+      "additionalProperties": false,
+      "properties": {
+        "footer": {
+          "default": "*NAME -- PAGE_NUMBER/TOTAL_PAGES*",
+          "description": "Template for the footer. Available placeholders:\n- `NAME`: The CV owner's name from `cv.name`\n- `PAGE_NUMBER`: Current page number\n- `TOTAL_PAGES`: Total number of pages\n- `CURRENT_DATE`: Formatted date based on `design.templates.single_date`\n- `MONTH_NAME`: Full month name (e.g., January)\n- `MONTH_ABBREVIATION`: Abbreviated month name (e.g., Jan)\n- `MONTH`: Month number (e.g., 1)\n- `MONTH_IN_TWO_DIGITS`: Zero-padded month (e.g., 01)\n- `YEAR`: Full year (e.g., 2025)\n- `YEAR_IN_TWO_DIGITS`: Two-digit year (e.g., 25)\n\nThe default value is `*NAME -- PAGE_NUMBER/TOTAL_PAGES*`.",
+          "title": "Footer",
+          "type": "string"
+        },
+        "top_note": {
+          "default": "*LAST_UPDATED CURRENT_DATE*",
+          "description": "Template for the top note. Available placeholders:\n- `LAST_UPDATED`: Localized \"last updated\" text from `locale.last_updated`\n- `CURRENT_DATE`: Formatted date based on `design.templates.single_date`\n- `NAME`: The CV owner's name from `cv.name`\n- `MONTH_NAME`: Full month name (e.g., January)\n- `MONTH_ABBREVIATION`: Abbreviated month name (e.g., Jan)\n- `MONTH`: Month number (e.g., 1)\n- `MONTH_IN_TWO_DIGITS`: Zero-padded month (e.g., 01)\n- `YEAR`: Full year (e.g., 2025)\n- `YEAR_IN_TWO_DIGITS`: Two-digit year (e.g., 25)\n\nThe default value is `*LAST_UPDATED CURRENT_DATE*`.",
+          "title": "Top Note",
+          "type": "string"
+        },
+        "single_date": {
+          "default": "MONTH_ABBREVIATION YEAR",
+          "description": "Template for single dates. Available placeholders:\n- `MONTH_NAME`: Full month name (e.g., January)\n- `MONTH_ABBREVIATION`: Abbreviated month name (e.g., Jan)\n- `MONTH`: Month number (e.g., 1)\n- `MONTH_IN_TWO_DIGITS`: Zero-padded month (e.g., 01)\n- `YEAR`: Full year (e.g., 2025)\n- `YEAR_IN_TWO_DIGITS`: Two-digit year (e.g., 25)\n\nThe default value is `MONTH_ABBREVIATION YEAR`.",
+          "title": "Single Date",
+          "type": "string"
+        },
+        "date_range": {
+          "default": "START_DATE \u2013 END_DATE",
+          "description": "Template for date ranges. Available placeholders:\n- `START_DATE`: Formatted start date based on `design.templates.single_date`\n- `END_DATE`: Formatted end date based on `design.templates.single_date` (or \"present\"/\"ongoing\" for current positions)\n\nThe default value is `START_DATE \u2013 END_DATE`.",
+          "title": "Date Range",
+          "type": "string"
+        },
+        "time_span": {
+          "default": "HOW_MANY_YEARS YEARS HOW_MANY_MONTHS MONTHS",
+          "description": "Template for time spans (duration calculations). Available placeholders:\n- `HOW_MANY_YEARS`: Number of years (e.g., 2)\n- `YEARS`: Localized word for \"years\" from `locale.years` (or singular \"year\")\n- `HOW_MANY_MONTHS`: Number of months (e.g., 3)\n- `MONTHS`: Localized word for \"months\" from `locale.months` (or singular \"month\")\n\nThe default value is `HOW_MANY_YEARS YEARS HOW_MANY_MONTHS MONTHS`.",
+          "title": "Time Span",
+          "type": "string"
+        },
+        "one_line_entry": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__OneLineEntry",
+          "description": "Template for one-line entries."
+        },
+        "education_entry": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__EducationEntry",
+          "description": "Template for education entries."
+        },
+        "normal_entry": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__NormalEntry",
+          "description": "Template for normal entries."
+        },
+        "experience_entry": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__ExperienceEntry",
+          "description": "Template for experience entries."
+        },
+        "publication_entry": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__PublicationEntry",
+          "description": "Template for publication entries."
+        }
+      },
+      "title": "Templates",
+      "type": "object"
+    },
+    "rendercv__schema__models__design__sidebar_theme__Typography": {
+      "additionalProperties": false,
+      "properties": {
+        "line_spacing": {
+          "$ref": "#/$defs/TypstDimension",
+          "default": "0.6em",
+          "description": "Space between lines of text. Larger values create more vertical space. The default value is `0.6em`."
+        },
+        "alignment": {
+          "default": "justified",
+          "description": "Text alignment. Options: 'left', 'justified' (spreads text across full width), 'justified-with-no-hyphenation' (justified without word breaks). The default value is `justified`.",
+          "enum": [
+            "left",
+            "justified",
+            "justified-with-no-hyphenation"
+          ],
+          "title": "Alignment",
+          "type": "string"
+        },
+        "date_and_location_column_alignment": {
+          "$ref": "#/$defs/Alignment",
+          "default": "right",
+          "description": "Alignment for dates and locations in entries. Options: 'left', 'center', 'right'. The default value is `right`."
+        },
+        "font_family": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__FontFamily"
+            },
+            {
+              "$ref": "#/$defs/rendercv__schema__models__design__font_family__FontFamily"
+            }
+          ],
+          "description": "The font family. You can provide a single font name as a string (applies to all elements), or a dictionary with keys 'body', 'name', 'headline', 'connections', and 'section_titles' to customize each element. Any system font can be used.",
+          "title": "Font Family"
+        },
+        "font_size": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__FontSize",
+          "description": "Font sizes for different elements."
+        },
+        "small_caps": {
+          "$ref": "#/$defs/SmallCaps",
+          "description": "Small caps styling for different elements."
+        },
+        "bold": {
+          "$ref": "#/$defs/rendercv__schema__models__design__sidebar_theme__Bold",
+          "description": "Bold styling for different elements."
+        }
+      },
+      "title": "Typography",
+      "type": "object"
     }
   },
   "additionalProperties": false,
@@ -5772,9 +6620,6 @@
     }
   },
   "required": [],
-  "title": "RenderCV",
-  "type": "object",
-  "description": "Typst-based CV/resume generator for academics and engineers.",
-  "$id": "https://raw.githubusercontent.com/rendercv/rendercv/main/schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#"
+  "title": "RenderCVModel",
+  "type": "object"
 }

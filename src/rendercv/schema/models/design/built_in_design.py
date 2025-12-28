@@ -8,6 +8,7 @@ import pydantic
 from ...variant_pydantic_model_generator import create_variant_pydantic_model
 from ...yaml_reader import read_yaml
 from .classic_theme import ClassicTheme
+from .sidebar_theme import SidebarTheme
 
 
 def discover_other_themes() -> list[type[ClassicTheme]]:
@@ -40,7 +41,7 @@ def discover_other_themes() -> list[type[ClassicTheme]]:
 
 # Build discriminated union dynamically
 type BuiltInDesign = Annotated[
-    ClassicTheme | reduce(or_, discover_other_themes()),  # ty: ignore[invalid-type-form]
+    ClassicTheme | SidebarTheme | reduce(or_, discover_other_themes()),  # type: ignore[valid-type]
     pydantic.Field(discriminator="theme"),
 ]
 available_themes: list[str] = [
