@@ -1,6 +1,11 @@
 // Import the rendercv function and all the refactored components
 #import "@preview/rendercv:0.1.0": *
 
+{% if design.typography.font_weight %}
+// Set body text font weight
+#set text(weight: "{{ design.typography.font_weight }}")
+{% endif %}
+
 // Apply the rendercv template with custom configuration
 #show: rendercv.with(
   name: "{{ cv.plain_name }}",

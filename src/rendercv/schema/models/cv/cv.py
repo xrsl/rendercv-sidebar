@@ -33,6 +33,14 @@ class Cv(BaseModelWithExtraKeys):
         default=None,
         examples=["New York, NY", "London, UK", "Istanbul, Türkiye"],
     )
+    expertise_tags: list[str] | None = pydantic.Field(
+        default=None,
+        description="Expertise tags displayed in the header (typically 2-4 tags).",
+        examples=[
+            ["scientific software", "process design/dev", "process modeling/sim"],
+            ["machine learning", "data analysis", "cloud computing"],
+        ],
+    )
     email: pydantic.EmailStr | list[pydantic.EmailStr] | None = pydantic.Field(
         default=None,
         description="You can provide multiple emails as a list.",

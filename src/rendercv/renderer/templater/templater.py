@@ -107,7 +107,11 @@ def render_full_template(
             f"Preamble.j2.{extension}",
             rendercv_model,
         )
-        code = f"{preamble}\n\n{header}\n"
+        # For sidebar theme, don't add header yet - it goes in main column
+        if is_sidebar_theme:
+            code = f"{preamble}\n\n"
+        else:
+            code = f"{preamble}\n\n{header}\n"
     else:
         code = f"{header}\n"
 
@@ -140,32 +144,96 @@ def render_full_template(
                     entry=entry,
                 )
                 entry_codes.append(entry_code)
-            entries_code = "\n\n".join(entry_codes)
-            section_code = f"{section_beginning}\n{entries_code}\n{section_ending}"
 
             # Add to sidebar or main based on configuration
             if rendercv_section.snake_case_title in sidebar_section_names:
+                # Use sidebar-specific spacing between entries
+                sidebar_spacing = rendercv_model.design.sidebar.space_between_entries
+                entries_code = f"\n#v({sidebar_spacing})\n".join(entry_codes)
+                # Add section icon mapping
+                section_icons = {
+                    "skills": "⚙",
+                    "publications": "📚",
+                    "values": "🧭",
+                    "hobbies": "❤",
+                    "references": "📄"
+                }
+                icon = section_icons.get(rendercv_section.snake_case_title, "")
+                icon_prefix = f"{icon} " if icon else ""
+                # Replace section title with icon + title
+                section_beginning_with_icon = section_beginning.replace(
+                    rendercv_section.title,
+                    f"{icon_prefix}{rendercv_section.title}"
+                )
+                section_code = f"{section_beginning_with_icon}\n{entries_code}\n{section_ending}"
                 sidebar_sections_code.append(section_code)
             else:
+                # Use default spacing for main column
+                entries_code = "\n\n".join(entry_codes)
+                section_code = f"{section_beginning}\n{entries_code}\n{section_ending}"
                 main_sections_code.append(section_code)
 
         # Create 2-column layout with grid
         sidebar_content = "\n\n".join(sidebar_sections_code)
-        main_content = "\n\n".join(main_sections_code)
+        # Add header to main column
+        main_content = f"{header}\n\n" + "\n\n".join(main_sections_code)
 
         # Get sidebar configuration
         sidebar_width = rendercv_model.design.sidebar.width
         gutter = rendercv_model.design.sidebar.gutter
         position = rendercv_model.design.sidebar.position
+        background_color = rendercv_model.design.sidebar.background_color
+        left_margin = rendercv_model.design.page.left_margin
+        top_margin = rendercv_model.design.page.top_margin
+        bottom_margin = rendercv_model.design.page.bottom_margin
 
-        # Create grid layout
+        # Create background rectangle for sidebar that extends to page edges
+        background_rect = ""
+        if background_color:
+            if position == "left":
+                # Place rectangle from page edge covering sidebar area
+                background_rect = f"""
+// Background for left sidebar extending to page edges
+#place(
+  top + left,
+  dx: -{left_margin},
+  dy: -{top_margin},
+  rect(
+    width: {sidebar_width} + {left_margin},
+    height: 100% + {top_margin} + {bottom_margin},
+    fill: {background_color.as_rgb()},
+  )
+)
+
+"""
+            else:  # right
+                background_rect = f"""
+// Background for right sidebar extending to page edges
+#place(
+  top + right,
+  dx: {rendercv_model.design.page.right_margin},
+  dy: -{top_margin},
+  rect(
+    width: {sidebar_width} + {rendercv_model.design.page.right_margin},
+    height: 100% + {top_margin} + {bottom_margin},
+    fill: {background_color.as_rgb()},
+  )
+)
+
+"""
+
+        # Create grid layout with sidebar
+        sidebar_font_size = rendercv_model.design.sidebar.font_size
         if position == "left":
-            code += f"""
-#grid(
+            code += f"""{background_rect}#grid(
   columns: ({sidebar_width}, 1fr),
   gutter: {gutter},
   [
+    #block(width: 100%, inset: (x: 0.3cm, y: 0cm))[
+      #text(size: {sidebar_font_size})[
 {sidebar_content}
+      ]
+    ]
   ],
   [
 {main_content}
@@ -173,15 +241,18 @@ def render_full_template(
 )
 """
         else:  # right
-            code += f"""
-#grid(
+            code += f"""{background_rect}#grid(
   columns: (1fr, {sidebar_width}),
   gutter: {gutter},
   [
 {main_content}
   ],
   [
+    #block(width: 100%, inset: (x: 0.3cm, y: 0cm))[
+      #text(size: {sidebar_font_size})[
 {sidebar_content}
+      ]
+    ]
   ]
 )
 """

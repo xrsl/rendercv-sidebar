@@ -7,7 +7,7 @@ from rendercv.schema.models.design.color import Color
 from rendercv.schema.models.design.font_family import FontFamily as FontFamilyType
 from rendercv.schema.models.design.typst_dimension import TypstDimension
 
-type Bullet = Literal["●", "•", "◦", "-", "◆", "★", "■", "—", "○"]
+type Bullet = Literal["●", "•", "◦", "-", "◆", "★", "■", "—", "○", "›", "»", ">"]
 type BodyAlignment = Literal["left", "justified", "justified-with-no-hyphenation"]
 type Alignment = Literal["left", "center", "right"]
 type SectionTitleType = Literal[
@@ -268,6 +268,13 @@ class Typography(BaseModelWithoutExtraKeys):
     bold: Bold = pydantic.Field(
         default_factory=Bold,
         description="Bold styling for different elements.",
+    )
+    font_weight: Literal["thin", "extralight", "light", "regular", "medium", "semibold", "bold", "extrabold", "black"] | None = pydantic.Field(
+        default="light",
+        description=(
+            "Font weight for body text. Options: thin, extralight, light, regular, medium, semibold, bold, extrabold, black. "
+            "Set to None to use default weight. The default value is `light`."
+        ),
     )
 
     @pydantic.field_validator(
@@ -843,6 +850,22 @@ class Sidebar(BaseModelWithoutExtraKeys):
         default=None,
         description=(
             "Background color for the sidebar. If not set, uses page background."
+        ),
+    )
+    space_between_entries: TypstDimension = pydantic.Field(
+        default="0.7cm",
+        description=(
+            "Vertical space between entries in sidebar sections. "
+            + length_common_description
+            + " The default value is `0.7cm`."
+        ),
+    )
+    font_size: TypstDimension = pydantic.Field(
+        default="9pt",
+        description=(
+            "Font size for sidebar text. "
+            + length_common_description
+            + " The default value is `9pt`."
         ),
     )
     sections: list[str] = pydantic.Field(
